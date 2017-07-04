@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ newsitem.title }}</title>
+</head>
+
+<body>
+
+<article>
+
+    <h1><a href="{{ newsitem.link }}">{{ newsitem.title }}</a></h1>
+
+    {% if content.image!="" %}
+        <div class='imageholder'><img src="{{ newsitem.image|thumbnail(480, 480) }}"></div>
+    {% endif %}
+
+    {{ newsitem.text }}
+
+    <p class="meta"><a href="{{ newsitem.link }}">Link</a> -
+        Posted by {{ newsitem.user.displayname }}
+        on {{ newsitem.datecreated|date("M d, ’y")}}</p>
+
+</article>
+</body>
+</html>

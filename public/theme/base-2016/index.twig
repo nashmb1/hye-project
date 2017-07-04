@@ -1,0 +1,37 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+    {% if record is defined %}
+
+        <h1>{{ record.title }}</h1>
+
+        {# Remove this block if you don't need it anymore. #}
+        {{ include('partials/_fresh_install.twig') }}
+
+        {{ record.teaser }}
+
+        {{ popup(record.image, 1200, 500) }}
+
+        {{ record.body }}
+
+        {{ include('partials/_recordfooter.twig', { 'record': record }) }}
+
+    {% endif %}
+
+    {% setcontent newsitems = "news/latest/4" %}
+
+    {% for newsitem in newsitems %}
+        <article>
+            <h2><a href="{{ newsitem.link }}">{{ newsitem.title }}</a></h2>
+
+            {{ newsitem.excerpt }}
+
+            <p class="meta"><a href="{{ newsitem.link }}">Link</a> -
+                Posted by {{ newsitem.user.displayname }}
+                on {{ newsitem.datecreated|date("M d, ’y")}}</p>
+
+        </article>
+    {% endfor %}
+
+{% endblock main %}
