@@ -24,16 +24,28 @@ pages:
             uses: title
         image:
             type: image
+        features:
+                type: repeater
+                fields:
+                    repeattitle:
+                        type: text
+                    repeatimage:
+                        type: image
+                        extensions: [ gif, jpg, png ]
+                    repeatcontent:
+                        type: html
         teaser:
             type: html
             height: 150px
         body:
             type: html
             height: 300px
+        galery:
+            type: imagelist
         template:
             type: templateselect
             filter: '*.twig'
-    taxonomy: [ groups ]
+    taxonomy: [ groups, tags ]
     recordsperpage: 100
 
 news:
